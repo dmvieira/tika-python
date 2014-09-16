@@ -20,9 +20,9 @@ Inspired by [Aptivate Tika](https://github.com/aptivate/python-tika) and [python
 Briefly test out the installation by running `python`, then `import tika`. If you need to install a virtual environment,
 like below, you must use `python2.7` in `/some/directory/bin`, since that is the only one with JCC installed.
 
-Alternatively you can
+Alternatively to 2 and 3 steps you can just:
 
-$ pip install git+https://github.com/dmvieira/tika-python.git
+`$ pip install git+https://github.com/dmvieira/tika-python.git`
 
 ###Installing JCC
 If you're lucky, a simple `pip install jcc` will do the trick.
