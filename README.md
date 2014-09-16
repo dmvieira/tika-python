@@ -4,16 +4,25 @@ A [JCC](http://lucene.apache.org/jcc/) based version of
 [Apache Tika](http://tika.apache.org/) that makes Tika available as a Python 
 library, installable via Setuptools and Easy Install.
 
-Inspired by [Aptivate Tika](https://github.com/aptivate/python-tika).
+Inspired by [Aptivate Tika](https://github.com/aptivate/python-tika) and [python-tika](https://github.com/sudharsh/python-tika)
 
-Installation
-----------------
+## Installation
+
+### Requirements
+
+* Java >= 1.5
+* [JCC](http://lucene.apache.org/pylucene/jcc/index.html)
+
 1. Install JCC (see below).  
 2. `python setup.py build`  
 3. `python setup.py install`  
 
 Briefly test out the installation by running `python`, then `import tika`. If you need to install a virtual environment,
 like below, you must use `python2.7` in `/some/directory/bin`, since that is the only one with JCC installed.
+
+Alternatively you can
+
+$ pip install git+https://github.com/dmvieira/tika-python.git
 
 ###Installing JCC
 If you're lucky, a simple `pip install jcc` will do the trick.
@@ -67,3 +76,25 @@ If you're running a different version of OS X, change the targets below (e.g. 10
 11. patch -p0 < *.diff  
 12. ../../bin/python2.7 setup.py build  
 13. ../../bin/python2.7 setup.py install  
+
+## Usage
+
+To use the `AutoDetectParser`,
+
+	import tika
+	tika.initVM()
+
+	from tika import parser
+   
+	print parser.from_buffer("<html><body>Hello World</body></html>
+	# Or directly from a file, 
+	# print parser.from_file("/tmp/foo.doc")
+   
+returns a `dict`,
+
+	{'content': u'Hello Cruel World',
+	 'metadata': {u'Content-Encoding': u'ISO-8859-1',
+					  u'Content-Type': u'text/html',
+					  u'title': u'Hello world'}
+	}
+
